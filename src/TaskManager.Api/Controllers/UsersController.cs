@@ -21,6 +21,7 @@ namespace TaskManager.Api.Controllers
         {
             var response = await _createUserUseCase.Execute(request);
             return CreatedAtAction(nameof(Create), new { id = response.Id }, response);
+
         }
     }
 }
