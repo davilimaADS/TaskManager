@@ -1,0 +1,11 @@
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Debug\net8.0\TaskManager.Communication.deps.json
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Debug\net8.0\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Debug\net8.0\TaskManager.Communication.pdb
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.AssemblyInfoInputs.cache
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.AssemblyInfo.cs
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.csproj.CoreCompileInputs.cache
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\refint\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.pdb
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\ref\TaskManager.Communication.dll
