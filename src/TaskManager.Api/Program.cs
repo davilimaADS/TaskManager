@@ -1,12 +1,38 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TaskManager.Api.Filters;
 using TaskManager.Application.UseCases.User.Create;
+using TaskManager.Application.UseCases.User.Login;
+using TaskManager.Domain.Repositories.TokenRepositories;
 using TaskManager.Domain.Repositories.UserRepositories;
 using TaskManager.Infrastructure.Data;
+using TaskManager.Infrastructure.Repositories.TokenRepositories;
 using TaskManager.Infrastructure.Repositories.UserRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var secretKey = jwtSettings["SecretKey"];
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+    };
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,7 +46,8 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilters))
 builder.Services.AddScoped<ICreateUserUseCase, CreateUserUseCase>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-
+builder.Services.AddScoped<ILoginUserUseCase, LoginUserUseCase>();
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

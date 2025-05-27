@@ -9,3 +9,4 @@ C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskMana
 C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\refint\TaskManager.Communication.dll
 C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.pdb
 C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\ref\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.sourcelink.json
