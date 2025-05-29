@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskManager.Exception")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccd5116703432ac28951b0bc8053cf18fc1bf611")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskManager.Exception")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskManager.Exception")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
