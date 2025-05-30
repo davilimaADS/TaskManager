@@ -4,12 +4,17 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using TaskManager.Api.Filters;
+using TaskManager.Application.UseCases.Project.Create;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
 using TaskManager.Application.UseCases.User.Profile;
+using TaskManager.Domain.HttpContext;
+using TaskManager.Domain.Repositories.ProjectRepositories;
 using TaskManager.Domain.Repositories.TokenRepositories;
 using TaskManager.Domain.Repositories.UserRepositories;
 using TaskManager.Infrastructure.Data;
+using TaskManager.Infrastructure.HttpContext;
+using TaskManager.Infrastructure.Repositories.ProjectRepositories;
 using TaskManager.Infrastructure.Repositories.TokenRepositories;
 using TaskManager.Infrastructure.Repositories.UserRepositories;
 
@@ -73,6 +78,13 @@ builder.Services.AddScoped<ILoginUserUseCase, LoginUserUseCase>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
 builder.Services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
+
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<ICreateProjectUseCase, CreateProjectUseCase>();
+builder.Services.AddScoped<IUserContext, UserContext>();
+
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -83,6 +95,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// **ADICIONADO: Middleware de autenticação JWT**
+app.UseAuthentication();
 
 app.UseAuthorization();
 
