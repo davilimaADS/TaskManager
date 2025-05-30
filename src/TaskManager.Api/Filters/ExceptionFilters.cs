@@ -21,17 +21,17 @@ namespace TaskManager.Api.Filters
 
         private void HandleException(ExceptionContext context)
         {
-            if (context.Exception is ErrorOnValidateException)
+            if (context.Exception is ErrorOnValidateException ex)
             {
-                var ex = (ErrorOnValidateException)context.Exception;
-
                 var errorMessage = new ResponseErrorJson(ex.Errors);
-
                 context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
-
                 context.Result = new BadRequestObjectResult(errorMessage);
-
-
+            }
+            else if (context.Exception is UserNotFoundException notFoundEx)
+            {
+                var errorMessage = new ResponseErrorJson(notFoundEx.Message);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                context.Result = new NotFoundObjectResult(errorMessage);
             }
             else
             {

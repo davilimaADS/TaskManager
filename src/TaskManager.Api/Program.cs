@@ -6,6 +6,7 @@ using System.Text;
 using TaskManager.Api.Filters;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
+using TaskManager.Application.UseCases.User.Profile;
 using TaskManager.Domain.Repositories.TokenRepositories;
 using TaskManager.Domain.Repositories.UserRepositories;
 using TaskManager.Infrastructure.Data;
@@ -70,6 +71,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<ILoginUserUseCase, LoginUserUseCase>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+builder.Services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
