@@ -2,5 +2,8 @@
 {
     public abstract class TaskManagerException : SystemException
     {
+        public TaskManagerException() { }
+
+        public TaskManagerException(string message) : base(message) { }
     }
 }

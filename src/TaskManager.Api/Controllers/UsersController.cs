@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
+using TaskManager.Application.UseCases.User.Profile;
 using TaskManager.Communication.Request.UserRequest;
 using TaskManager.Communication.Response.UserResponse;
 
@@ -12,10 +15,12 @@ namespace TaskManager.Api.Controllers
     {
         private readonly ICreateUserUseCase _createUserUseCase;
         private readonly ILoginUserUseCase _loginUserUseCase;
-        public UsersController(ICreateUserUseCase createUserUseCase, ILoginUserUseCase loginUserUseCase)
+        private readonly IGetUserProfileUseCase _getUserProfileUseCase;
+        public UsersController(ICreateUserUseCase createUserUseCase, ILoginUserUseCase loginUserUseCase, IGetUserProfileUseCase getUserProfileUseCase)
         {
             _createUserUseCase = createUserUseCase;
             _loginUserUseCase = loginUserUseCase;
+            _getUserProfileUseCase = getUserProfileUseCase;
         }
 
         [HttpPost("Register")]
@@ -33,6 +38,20 @@ namespace TaskManager.Api.Controllers
             return Ok(response);
         }
 
+        [HttpGet("profile")]
+        [Authorize]
+        public async Task<IActionResult> GetProfile()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!Guid.TryParse(userId, out var guid))
+            {
+                return Unauthorized();
+            }
+
+            var result = await _getUserProfileUseCase.Execute(guid);
+            return Ok(result);
+        }
     }
 }
 
