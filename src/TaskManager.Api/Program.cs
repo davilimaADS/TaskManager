@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using TaskManager.Api.Filters;
 using TaskManager.Application.UseCases.Project.Create;
+using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
 using TaskManager.Application.UseCases.User.Profile;
@@ -83,6 +84,7 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<ICreateProjectUseCase, CreateProjectUseCase>();
 builder.Services.AddScoped<IUserContext, UserContext>();
 
+builder.Services.AddScoped<IGetAllProjectsUseCase, GetAllProjectsUseCase>();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();

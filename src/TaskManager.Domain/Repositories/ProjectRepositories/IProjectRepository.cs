@@ -5,5 +5,6 @@ namespace TaskManager.Domain.Repositories.ProjectRepositories
     public interface IProjectRepository
     {
         Task AddAsync(Project project);
+        Task<List<Project>> GetAllAsync( Guid userId);
     }
 }
