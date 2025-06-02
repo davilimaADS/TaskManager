@@ -1,14 +1,17 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using TaskManager.Api.Filters;
+using TaskManager.Application.UseCases.GetById;
 using TaskManager.Application.UseCases.Project.Create;
 using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
 using TaskManager.Application.UseCases.User.Profile;
+using TaskManager.Application.Validators.ProjectValidator;
 using TaskManager.Domain.HttpContext;
 using TaskManager.Domain.Repositories.ProjectRepositories;
 using TaskManager.Domain.Repositories.TokenRepositories;
@@ -85,6 +88,8 @@ builder.Services.AddScoped<ICreateProjectUseCase, CreateProjectUseCase>();
 builder.Services.AddScoped<IUserContext, UserContext>();
 
 builder.Services.AddScoped<IGetAllProjectsUseCase, GetAllProjectsUseCase>();
+builder.Services.AddScoped<IGetProjectByIdUseCase, GetProjectByIdUseCase>();
+builder.Services.AddScoped<IValidator<Guid>, GetProjectByIdValidator>();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
