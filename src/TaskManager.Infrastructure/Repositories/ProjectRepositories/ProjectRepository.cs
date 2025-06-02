@@ -1,4 +1,5 @@
-﻿using TaskManager.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManager.Domain.Entities;
 using TaskManager.Domain.Repositories.ProjectRepositories;
 using TaskManager.Infrastructure.Data;
 
@@ -17,6 +18,14 @@ namespace TaskManager.Infrastructure.Repositories.ProjectRepositories
         {
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Project>> GetAllAsync(Guid userId)
+        {
+            return await _context.Projects
+               .Where(p => p.OwnerId == userId && p.DeletedAt == null)
+               .OrderByDescending(p => p.CreatedAt)
+               .ToListAsync();
         }
     }
 }
