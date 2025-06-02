@@ -27,5 +27,12 @@ namespace TaskManager.Infrastructure.Repositories.ProjectRepositories
                .OrderByDescending(p => p.CreatedAt)
                .ToListAsync();
         }
+
+        public async Task<Project?> GetByIdAsync(Guid id)
+        {
+            return await _context.Projects
+           .Include(p => p.Owner)
+           .FirstOrDefaultAsync(p => p.Id == id);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TaskManager.Application.UseCases.GetById;
 using TaskManager.Application.UseCases.Project.Create;
 using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Communication.Request.ProjectRequest;
@@ -12,11 +13,13 @@ namespace TaskManager.Api.Controllers
     {
         private readonly ICreateProjectUseCase _createProjectUseCase;
         private readonly IGetAllProjectsUseCase _getAllProjectsUseCase;
+        private readonly IGetProjectByIdUseCase _getProjectByIdUseCase;
 
-        public ProjectController(ICreateProjectUseCase createProjectUseCase, IGetAllProjectsUseCase getAllProjectsUseCase)
+        public ProjectController(ICreateProjectUseCase createProjectUseCase, IGetAllProjectsUseCase getAllProjectsUseCase, IGetProjectByIdUseCase getProjectByIdUseCase)
         {
             _createProjectUseCase = createProjectUseCase;
             _getAllProjectsUseCase = getAllProjectsUseCase;
+            _getProjectByIdUseCase = getProjectByIdUseCase;
         }
 
         [HttpPost]
@@ -31,6 +34,13 @@ namespace TaskManager.Api.Controllers
         {
             var projects = await _getAllProjectsUseCase.Execute();
             return Ok(projects);
+        }
+
+        [HttpGet("{id}")] 
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var response = await _getProjectByIdUseCase.ExecuteAsync(id);
+            return Ok(response);
         }
     }
 
