@@ -4,7 +4,7 @@ using TaskManager.Domain.HttpContext;
 using TaskManager.Domain.Repositories.ProjectRepositories;
 using TaskManager.Exception.ExceptionBase;
 
-namespace TaskManager.Application.UseCases.GetById
+namespace TaskManager.Application.UseCases.Project.GetById
 {
     public class GetProjectByIdUseCase : IGetProjectByIdUseCase
     {

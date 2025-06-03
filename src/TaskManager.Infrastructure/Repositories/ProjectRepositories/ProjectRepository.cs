@@ -34,5 +34,10 @@ namespace TaskManager.Infrastructure.Repositories.ProjectRepositories
            .Include(p => p.Owner)
            .FirstOrDefaultAsync(p => p.Id == id);
         }
+        public async Task UpdateAsync(Project project)
+        {
+            _context.Projects.Update(project);
+            await _context.SaveChangesAsync();
+        }
     }
 }

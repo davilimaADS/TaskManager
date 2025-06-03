@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.Application.UseCases.GetById;
 using TaskManager.Application.UseCases.Project.Create;
 using TaskManager.Application.UseCases.Project.GetAll;
+using TaskManager.Application.UseCases.Project.GetById;
+using TaskManager.Application.UseCases.Project.Update;
 using TaskManager.Communication.Request.ProjectRequest;
 
 namespace TaskManager.Api.Controllers
@@ -14,12 +15,16 @@ namespace TaskManager.Api.Controllers
         private readonly ICreateProjectUseCase _createProjectUseCase;
         private readonly IGetAllProjectsUseCase _getAllProjectsUseCase;
         private readonly IGetProjectByIdUseCase _getProjectByIdUseCase;
+        private readonly IUpdateProjectUseCase _updateProjectUseCase;
 
-        public ProjectController(ICreateProjectUseCase createProjectUseCase, IGetAllProjectsUseCase getAllProjectsUseCase, IGetProjectByIdUseCase getProjectByIdUseCase)
+        public ProjectController(ICreateProjectUseCase createProjectUseCase, 
+            IGetAllProjectsUseCase getAllProjectsUseCase, IGetProjectByIdUseCase getProjectByIdUseCase, 
+            IUpdateProjectUseCase updateProjectUseCase)
         {
             _createProjectUseCase = createProjectUseCase;
             _getAllProjectsUseCase = getAllProjectsUseCase;
             _getProjectByIdUseCase = getProjectByIdUseCase;
+            _updateProjectUseCase = updateProjectUseCase;
         }
 
         [HttpPost]
@@ -42,7 +47,12 @@ namespace TaskManager.Api.Controllers
             var response = await _getProjectByIdUseCase.ExecuteAsync(id);
             return Ok(response);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProjectRequest request)
+        {
+            var response = await _updateProjectUseCase.ExecuteAsync(id, request);
+            return Ok(response);
+        }
     }
-
-    }
+}
 
