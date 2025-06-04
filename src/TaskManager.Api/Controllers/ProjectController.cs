@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.UseCases.Project.Create;
+using TaskManager.Application.UseCases.Project.Delete;
 using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Application.UseCases.Project.GetById;
 using TaskManager.Application.UseCases.Project.Update;
@@ -16,15 +17,18 @@ namespace TaskManager.Api.Controllers
         private readonly IGetAllProjectsUseCase _getAllProjectsUseCase;
         private readonly IGetProjectByIdUseCase _getProjectByIdUseCase;
         private readonly IUpdateProjectUseCase _updateProjectUseCase;
+        private readonly IDeleteProjectUseCase _deleteProjectUseCase;
 
         public ProjectController(ICreateProjectUseCase createProjectUseCase, 
             IGetAllProjectsUseCase getAllProjectsUseCase, IGetProjectByIdUseCase getProjectByIdUseCase, 
-            IUpdateProjectUseCase updateProjectUseCase)
+            IUpdateProjectUseCase updateProjectUseCase,
+            IDeleteProjectUseCase deleteProjectUseCase)
         {
             _createProjectUseCase = createProjectUseCase;
             _getAllProjectsUseCase = getAllProjectsUseCase;
             _getProjectByIdUseCase = getProjectByIdUseCase;
             _updateProjectUseCase = updateProjectUseCase;
+            _deleteProjectUseCase = deleteProjectUseCase;
         }
 
         [HttpPost]
@@ -52,6 +56,12 @@ namespace TaskManager.Api.Controllers
         {
             var response = await _updateProjectUseCase.ExecuteAsync(id, request);
             return Ok(response);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _deleteProjectUseCase.ExecuteAsync(id);
+            return NoContent();
         }
     }
 }

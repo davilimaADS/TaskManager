@@ -1,6 +1,5 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using TaskManager.Application.Validators.ProjectValidator;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -8,12 +7,14 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using TaskManager.Api.Filters;
 using TaskManager.Application.UseCases.Project.Create;
+using TaskManager.Application.UseCases.Project.Delete;
 using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Application.UseCases.Project.GetById;
 using TaskManager.Application.UseCases.Project.Update;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
 using TaskManager.Application.UseCases.User.Profile;
+using TaskManager.Application.Validators.ProjectValidator;
 using TaskManager.Domain.HttpContext;
 using TaskManager.Domain.Repositories.ProjectRepositories;
 using TaskManager.Domain.Repositories.TokenRepositories;
@@ -93,6 +94,8 @@ builder.Services.AddScoped<IGetAllProjectsUseCase, GetAllProjectsUseCase>();
 builder.Services.AddScoped<IGetProjectByIdUseCase, GetProjectByIdUseCase>();
 builder.Services.AddScoped<IValidator<Guid>, GetProjectByIdValidator>();
 builder.Services.AddScoped<IUpdateProjectUseCase, UpdateProjectUseCase>();
+builder.Services.AddScoped<IDeleteProjectUseCase, DeleteProjectUseCase>();
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateProjectRequestValidator>();
