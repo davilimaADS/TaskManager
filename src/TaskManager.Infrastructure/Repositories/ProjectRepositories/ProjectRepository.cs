@@ -31,11 +31,17 @@ namespace TaskManager.Infrastructure.Repositories.ProjectRepositories
         public async Task<Project?> GetByIdAsync(Guid id)
         {
             return await _context.Projects
-           .Include(p => p.Owner)
-           .FirstOrDefaultAsync(p => p.Id == id);
+               .Include(p => p.Owner)
+               .FirstOrDefaultAsync(p => p.Id == id && p.DeletedAt == null);
         }
         public async Task UpdateAsync(Project project)
         {
+            _context.Projects.Update(project);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(Project project)
+        {
+            project.DeletedAt = DateTime.UtcNow; 
             _context.Projects.Update(project);
             await _context.SaveChangesAsync();
         }

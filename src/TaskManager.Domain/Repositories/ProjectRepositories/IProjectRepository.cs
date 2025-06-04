@@ -8,5 +8,6 @@ namespace TaskManager.Domain.Repositories.ProjectRepositories
         Task<List<Project>> GetAllAsync( Guid userId);
         Task<Project?> GetByIdAsync(Guid id);
         Task UpdateAsync(Project project);
+        Task DeleteAsync(Project project);
     }
 }
