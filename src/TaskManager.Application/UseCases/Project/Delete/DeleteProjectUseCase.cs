@@ -1,7 +1,7 @@
-﻿
-using TaskManager.Domain.HttpContext;
+﻿using TaskManager.Domain.HttpContext;
 using TaskManager.Domain.Repositories.ProjectRepositories;
 using TaskManager.Exception.ExceptionBase;
+using DotNetTask = System.Threading.Tasks.Task;
 
 namespace TaskManager.Application.UseCases.Project.Delete
 {
@@ -16,15 +16,13 @@ namespace TaskManager.Application.UseCases.Project.Delete
             _userContext = userContext;
         }
 
-
-
-        public async Task ExecuteAsync(Guid id)
+        public async DotNetTask ExecuteAsync(Guid id)
         {
             var userId = _userContext.GetCurrentUserId();
 
             var project = await _projectRepository.GetByIdAsync(id);
 
-            if (project is null || project.OwnerId != userId || project.DeletedAt != null)
+            if (project == null || project.OwnerId != userId || project.DeletedAt != null)
             {
                 throw new ProjectNotFoundException(id);
             }

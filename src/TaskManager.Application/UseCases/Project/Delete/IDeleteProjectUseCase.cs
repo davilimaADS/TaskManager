@@ -1,7 +1,11 @@
-﻿namespace TaskManager.Application.UseCases.Project.Delete
+﻿using System;
+using System.Threading.Tasks;
+using DotNetTask = System.Threading.Tasks.Task;
+
+namespace TaskManager.Application.UseCases.Project.Delete
 {
     public interface IDeleteProjectUseCase
     {
-        Task ExecuteAsync(Guid id);
+        DotNetTask ExecuteAsync(Guid id);
     }
 }

@@ -11,17 +11,20 @@ using TaskManager.Application.UseCases.Project.Delete;
 using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Application.UseCases.Project.GetById;
 using TaskManager.Application.UseCases.Project.Update;
+using TaskManager.Application.UseCases.Task.Create;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
 using TaskManager.Application.UseCases.User.Profile;
 using TaskManager.Application.Validators.ProjectValidator;
 using TaskManager.Domain.HttpContext;
 using TaskManager.Domain.Repositories.ProjectRepositories;
+using TaskManager.Domain.Repositories.TaskRepositories;
 using TaskManager.Domain.Repositories.TokenRepositories;
 using TaskManager.Domain.Repositories.UserRepositories;
 using TaskManager.Infrastructure.Data;
 using TaskManager.Infrastructure.HttpContext;
 using TaskManager.Infrastructure.Repositories.ProjectRepositories;
+using TaskManager.Infrastructure.Repositories.TaskRepositories;
 using TaskManager.Infrastructure.Repositories.TokenRepositories;
 using TaskManager.Infrastructure.Repositories.UserRepositories;
 
@@ -95,6 +98,9 @@ builder.Services.AddScoped<IGetProjectByIdUseCase, GetProjectByIdUseCase>();
 builder.Services.AddScoped<IValidator<Guid>, GetProjectByIdValidator>();
 builder.Services.AddScoped<IUpdateProjectUseCase, UpdateProjectUseCase>();
 builder.Services.AddScoped<IDeleteProjectUseCase, DeleteProjectUseCase>();
+
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<ICreateTaskUseCase, CreateTaskUseCase>();
 
 builder.Services.AddHttpContextAccessor();
 
