@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.UseCases.Task.Create;
 using TaskManager.Application.UseCases.Task.GetAll;
+using TaskManager.Application.UseCases.Task.GetById;
 using TaskManager.Communication.Request.TaskRequest;
+using TaskManager.Communication.Response.TaskResponse;
 
 namespace TaskManager.Api.Controllers
 {
@@ -12,11 +14,14 @@ namespace TaskManager.Api.Controllers
     {
         private readonly ICreateTaskUseCase _createTaskUseCase;
         private readonly IGetAllTaskUseCase _getAllTaskUseCase;
+        private readonly IGetTaskByIdUseCase _getTaskByIdUseCase;
 
-        public TaskController(ICreateTaskUseCase createTaskUseCase, IGetAllTaskUseCase getAllTaskUseCase)
+        public TaskController(ICreateTaskUseCase createTaskUseCase, IGetAllTaskUseCase getAllTaskUseCase, 
+            IGetTaskByIdUseCase getTaskByIdUseCase)
         {
             _createTaskUseCase = createTaskUseCase;
             _getAllTaskUseCase = getAllTaskUseCase;
+            _getTaskByIdUseCase = getTaskByIdUseCase;
         }
 
         [HttpPost]
@@ -31,6 +36,12 @@ namespace TaskManager.Api.Controllers
         {
             var tasks = await _getAllTaskUseCase.ExecuteAsync(projectId);
             return Ok(tasks);
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GetTaskByIdResponse>> GetById(Guid id)
+        {
+            var task = await _getTaskByIdUseCase.ExecuteAsync(id);
+            return Ok(task);
         }
     }
 }

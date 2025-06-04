@@ -33,6 +33,18 @@ namespace TaskManager.Api.Filters
                 context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
                 context.Result = new NotFoundObjectResult(errorMessage);
             }
+            else if (context.Exception is TaskNotFoundException taskNotFoundEx)  // <- nova exception
+            {
+                var errorMessage = new ResponseErrorJson(taskNotFoundEx.Message);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                context.Result = new NotFoundObjectResult(errorMessage);
+            }
+            else if (context.Exception is ProjectNotFoundException projectNotFoundEx) // <-- aqui
+            {
+                var errorMessage = new ResponseErrorJson(projectNotFoundEx.Message);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                context.Result = new NotFoundObjectResult(errorMessage);
+            }
             else
             {
                 ThrowUnkowError(context);
