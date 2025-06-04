@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.UseCases.Task.Create;
+using TaskManager.Application.UseCases.Task.Delete;
 using TaskManager.Application.UseCases.Task.GetAll;
 using TaskManager.Application.UseCases.Task.GetById;
 using TaskManager.Application.UseCases.Task.Task;
@@ -17,14 +17,17 @@ namespace TaskManager.Api.Controllers
         private readonly IGetAllTaskUseCase _getAllTaskUseCase;
         private readonly IGetTaskByIdUseCase _getTaskByIdUseCase;
         private readonly IUpdateTaskUseCase _updateTaskUseCase;
+        private readonly IDeleteTaskUseCase _deleteTaskUseCase;
 
         public TaskController(ICreateTaskUseCase createTaskUseCase, IGetAllTaskUseCase getAllTaskUseCase, 
-            IGetTaskByIdUseCase getTaskByIdUseCase, IUpdateTaskUseCase updateTaskUseCase)
+            IGetTaskByIdUseCase getTaskByIdUseCase, IUpdateTaskUseCase updateTaskUseCase, 
+            IDeleteTaskUseCase deleteTaskUseCase)
         {
             _createTaskUseCase = createTaskUseCase;
             _getAllTaskUseCase = getAllTaskUseCase;
             _getTaskByIdUseCase = getTaskByIdUseCase;
             _updateTaskUseCase = updateTaskUseCase;
+            _deleteTaskUseCase = deleteTaskUseCase;
 
         }
 
@@ -52,6 +55,12 @@ namespace TaskManager.Api.Controllers
         {
             var response = await _updateTaskUseCase.ExecuteAsync(projectId, taskId, request);
             return Ok(response);
+        }
+        [HttpDelete("{taskId}")]
+        public async Task<IActionResult> DeleteTask(Guid taskId)
+        {
+            await _deleteTaskUseCase.ExecuteAsync(taskId);
+            return NoContent(); 
         }
     }
 }
