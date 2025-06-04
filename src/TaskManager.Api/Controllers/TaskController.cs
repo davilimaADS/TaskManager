@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.UseCases.Task.Create;
 using TaskManager.Application.UseCases.Task.GetAll;
 using TaskManager.Application.UseCases.Task.GetById;
+using TaskManager.Application.UseCases.Task.Task;
 using TaskManager.Communication.Request.TaskRequest;
 using TaskManager.Communication.Response.TaskResponse;
 
@@ -15,13 +16,16 @@ namespace TaskManager.Api.Controllers
         private readonly ICreateTaskUseCase _createTaskUseCase;
         private readonly IGetAllTaskUseCase _getAllTaskUseCase;
         private readonly IGetTaskByIdUseCase _getTaskByIdUseCase;
+        private readonly IUpdateTaskUseCase _updateTaskUseCase;
 
         public TaskController(ICreateTaskUseCase createTaskUseCase, IGetAllTaskUseCase getAllTaskUseCase, 
-            IGetTaskByIdUseCase getTaskByIdUseCase)
+            IGetTaskByIdUseCase getTaskByIdUseCase, IUpdateTaskUseCase updateTaskUseCase)
         {
             _createTaskUseCase = createTaskUseCase;
             _getAllTaskUseCase = getAllTaskUseCase;
             _getTaskByIdUseCase = getTaskByIdUseCase;
+            _updateTaskUseCase = updateTaskUseCase;
+
         }
 
         [HttpPost]
@@ -42,6 +46,12 @@ namespace TaskManager.Api.Controllers
         {
             var task = await _getTaskByIdUseCase.ExecuteAsync(id);
             return Ok(task);
+        }
+        [HttpPut("{taskId}")]
+        public async Task<ActionResult<UpdateTaskResponse>> UpdateTask(Guid projectId, Guid taskId, [FromBody] UpdateTaskRequest request)
+        {
+            var response = await _updateTaskUseCase.ExecuteAsync(projectId, taskId, request);
+            return Ok(response);
         }
     }
 }
