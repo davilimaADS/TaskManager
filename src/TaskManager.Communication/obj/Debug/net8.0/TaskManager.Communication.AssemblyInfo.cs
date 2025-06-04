@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskManager.Communication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4e26a4b1a25aade2908be4d8b2c4345df3850b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c151c06edf15db58a3a20c538e80fdb438fc172d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskManager.Communication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskManager.Communication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

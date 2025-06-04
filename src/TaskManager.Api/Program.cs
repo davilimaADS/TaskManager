@@ -1,5 +1,4 @@
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,6 +12,7 @@ using TaskManager.Application.UseCases.Project.GetById;
 using TaskManager.Application.UseCases.Project.Update;
 using TaskManager.Application.UseCases.Task.Create;
 using TaskManager.Application.UseCases.Task.GetAll;
+using TaskManager.Application.UseCases.Task.GetById;
 using TaskManager.Application.UseCases.User.Create;
 using TaskManager.Application.UseCases.User.Login;
 using TaskManager.Application.UseCases.User.Profile;
@@ -103,6 +103,7 @@ builder.Services.AddScoped<IDeleteProjectUseCase, DeleteProjectUseCase>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ICreateTaskUseCase, CreateTaskUseCase>();
 builder.Services.AddScoped<IGetAllTaskUseCase, GetAllTaskUseCase>();
+builder.Services.AddScoped<IGetTaskByIdUseCase, GetTaskByIdUseCase>();
 
 builder.Services.AddHttpContextAccessor();
 
