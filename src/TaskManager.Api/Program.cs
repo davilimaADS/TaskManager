@@ -11,6 +11,7 @@ using TaskManager.Application.UseCases.Project.GetAll;
 using TaskManager.Application.UseCases.Project.GetById;
 using TaskManager.Application.UseCases.Project.Update;
 using TaskManager.Application.UseCases.Task.Create;
+using TaskManager.Application.UseCases.Task.Delete;
 using TaskManager.Application.UseCases.Task.GetAll;
 using TaskManager.Application.UseCases.Task.GetById;
 using TaskManager.Application.UseCases.Task.Task;
@@ -109,6 +110,7 @@ builder.Services.AddScoped<IGetAllTaskUseCase, GetAllTaskUseCase>();
 builder.Services.AddScoped<IGetTaskByIdUseCase, GetTaskByIdUseCase>();
 builder.Services.AddScoped<IUpdateTaskUseCase, UpdateTaskUseCase>();
 builder.Services.AddScoped<IValidator<UpdateTaskRequest>, UpdateTaskValidator>();
+builder.Services.AddScoped<IDeleteTaskUseCase, DeleteTaskUseCase>();
 
 builder.Services.AddHttpContextAccessor();
 
