@@ -1,0 +1,16 @@
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Release\net8.0\TaskManager.Communication.deps.json
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Release\net8.0\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Release\net8.0\TaskManager.Communication.pdb
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Release\net8.0\TaskManager.Domain.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Release\net8.0\TaskManager.Domain.pdb
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.csproj.AssemblyReference.cache
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.AssemblyInfoInputs.cache
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.AssemblyInfo.cs
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.csproj.CoreCompileInputs.cache
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.sourcelink.json
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskMana.B470EB87.Up2Date
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\refint\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\TaskManager.Communication.pdb
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Release\net8.0\ref\TaskManager.Communication.dll

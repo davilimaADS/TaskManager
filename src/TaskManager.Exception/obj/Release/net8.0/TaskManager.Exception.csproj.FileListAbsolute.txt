@@ -1,0 +1,12 @@
+C:\Workspace\TaskManager\src\TaskManager.Exception\bin\Release\net8.0\TaskManager.Exception.deps.json
+C:\Workspace\TaskManager\src\TaskManager.Exception\bin\Release\net8.0\TaskManager.Exception.dll
+C:\Workspace\TaskManager\src\TaskManager.Exception\bin\Release\net8.0\TaskManager.Exception.pdb
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.AssemblyInfoInputs.cache
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.AssemblyInfo.cs
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.csproj.CoreCompileInputs.cache
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.sourcelink.json
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.dll
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\refint\TaskManager.Exception.dll
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\TaskManager.Exception.pdb
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Release\net8.0\ref\TaskManager.Exception.dll

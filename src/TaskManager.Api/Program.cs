@@ -112,9 +112,16 @@ builder.Services.AddScoped<IUpdateTaskUseCase, UpdateTaskUseCase>();
 builder.Services.AddScoped<IValidator<UpdateTaskRequest>, UpdateTaskValidator>();
 builder.Services.AddScoped<IDeleteTaskUseCase, DeleteTaskUseCase>();
 
+
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateProjectRequestValidator>();
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
 
 builder.Services.AddCors(options =>
 {
@@ -132,6 +139,8 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 
 app.UseCors("AllowNextJS");
+
+app.UseCookiePolicy();
 
 app.UseSwagger();
 app.UseSwaggerUI();
