@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.UseCases.Project.Create;
 using TaskManager.Application.UseCases.Project.Delete;
@@ -32,6 +33,7 @@ namespace TaskManager.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateProjectRequest request)
         {
             var response = await _createProjectUseCase.Execute(request);
@@ -39,25 +41,29 @@ namespace TaskManager.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             var projects = await _getAllProjectsUseCase.Execute();
             return Ok(projects);
         }
 
-        [HttpGet("{id}")] 
+        [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetById(Guid id)
         {
             var response = await _getProjectByIdUseCase.ExecuteAsync(id);
             return Ok(response);
         }
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProjectRequest request)
         {
             var response = await _updateProjectUseCase.ExecuteAsync(id, request);
             return Ok(response);
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _deleteProjectUseCase.ExecuteAsync(id);

@@ -116,18 +116,26 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateProjectRequestValidator>();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddCors(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.AddPolicy("AllowNextJS", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+}) ;
+
+var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-// **ADICIONADO: Middleware de autenticação JWT**
+app.UseCors("AllowNextJS");
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseAuthentication();
 
 app.UseAuthorization();

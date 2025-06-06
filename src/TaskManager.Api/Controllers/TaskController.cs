@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.UseCases.Task.Create;
 using TaskManager.Application.UseCases.Task.Delete;
 using TaskManager.Application.UseCases.Task.GetAll;
@@ -28,10 +29,10 @@ namespace TaskManager.Api.Controllers
             _getTaskByIdUseCase = getTaskByIdUseCase;
             _updateTaskUseCase = updateTaskUseCase;
             _deleteTaskUseCase = deleteTaskUseCase;
-
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create([FromBody] CreateTaskRequest request)
         {
             var response = await _createTaskUseCase.Execute(request);
@@ -39,24 +40,28 @@ namespace TaskManager.Api.Controllers
         }
         
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll(Guid projectId)
         {
             var tasks = await _getAllTaskUseCase.ExecuteAsync(projectId);
             return Ok(tasks);
         }
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<GetTaskByIdResponse>> GetById(Guid id)
         {
             var task = await _getTaskByIdUseCase.ExecuteAsync(id);
             return Ok(task);
         }
         [HttpPut("{taskId}")]
+        [Authorize]
         public async Task<ActionResult<UpdateTaskResponse>> UpdateTask(Guid projectId, Guid taskId, [FromBody] UpdateTaskRequest request)
         {
             var response = await _updateTaskUseCase.ExecuteAsync(projectId, taskId, request);
             return Ok(response);
         }
         [HttpDelete("{taskId}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTask(Guid taskId)
         {
             await _deleteTaskUseCase.ExecuteAsync(taskId);
