@@ -10,14 +10,14 @@ namespace TaskManager.Application.Validators.ProjectValidator
         public UpdateProjectRequestValidator()
         {
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("O nome do projeto é obrigatório.");
+                .NotEmpty().WithMessage("The project name is mandatory.");
 
             RuleFor(x => x.Description)
-                .NotEmpty().WithMessage("A descrição do projeto é obrigatória.");
+                .NotEmpty().WithMessage("The project description is mandatory.");
 
             RuleFor(x => x.Status)
                 .IsInEnum()
-                .WithMessage("Status inválido. Valores permitidos: InProgress, Completed, Cancelled.");
+                .WithMessage("Invalid status. Allowed values: InProgress, Completed, Cancelled.");
         }
 
     }
