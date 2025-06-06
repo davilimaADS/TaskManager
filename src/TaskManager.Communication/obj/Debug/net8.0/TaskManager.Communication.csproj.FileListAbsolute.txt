@@ -9,3 +9,8 @@ C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskMana
 C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\refint\TaskManager.Communication.dll
 C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.pdb
 C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\ref\TaskManager.Communication.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.sourcelink.json
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Debug\net8.0\TaskManager.Domain.dll
+C:\Workspace\TaskManager\src\TaskManager.Communication\bin\Debug\net8.0\TaskManager.Domain.pdb
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskManager.Communication.csproj.AssemblyReference.cache
+C:\Workspace\TaskManager\src\TaskManager.Communication\obj\Debug\net8.0\TaskMana.B470EB87.Up2Date

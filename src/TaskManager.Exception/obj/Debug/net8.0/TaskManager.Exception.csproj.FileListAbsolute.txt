@@ -9,3 +9,4 @@ C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Debug\net8.0\TaskManager.
 C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Debug\net8.0\refint\TaskManager.Exception.dll
 C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Debug\net8.0\TaskManager.Exception.pdb
 C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Debug\net8.0\ref\TaskManager.Exception.dll
+C:\Workspace\TaskManager\src\TaskManager.Exception\obj\Debug\net8.0\TaskManager.Exception.sourcelink.json

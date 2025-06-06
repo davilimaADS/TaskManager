@@ -64,9 +64,9 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
-            "FluentValidation": {
+            "FluentValidation.AspNetCore": {
               "target": "Package",
-              "version": "[12.0.0, )"
+              "version": "[11.3.1, )"
             }
           },
           "imports": [
@@ -116,7 +116,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Workspace\\TaskManager\\src\\TaskManager.Domain\\TaskManager.Domain.csproj": {
+                "projectPath": "C:\\Workspace\\TaskManager\\src\\TaskManager.Domain\\TaskManager.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
